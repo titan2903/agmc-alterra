@@ -11,4 +11,6 @@
 
 - [Postman collection Binance and Book](https://github.com/titan2903/agmc-alterra/tree/master/day_1)
 
+### Day 2
+
 - [RESTful API using Golang, Echo, Gorm and MySQL](https://github.com/titan2903/agmc-alterra/tree/master/day_2)
