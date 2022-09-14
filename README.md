@@ -14,3 +14,5 @@
 ### Day 2
 
 - [RESTful API using Golang, Echo, Gorm and MySQL](https://github.com/titan2903/agmc-alterra/tree/master/day_2)
+
+### Day 3
