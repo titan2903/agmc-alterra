@@ -5,12 +5,15 @@ import (
 	"day_3/controllers"
 	"day_3/handlers"
 	lib "day_3/lib/repositories"
+	"day_3/middleware"
 
 	"github.com/labstack/echo/v4"
 )
 
 func Routes() {
 	e := echo.New()
+
+	middleware.LogMiddleware(e)
 
 	repository := lib.NewRepositories(config.GetQuery())
 	controller := controllers.NewControllers(repository)
