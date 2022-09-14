@@ -10,7 +10,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -48,10 +47,6 @@ var (
 )
 
 func GetQuery() *gorm.DB {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 
 	oneSync.Do(func() {
 		dbLogger := logger.New(
