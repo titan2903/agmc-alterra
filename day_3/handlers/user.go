@@ -3,6 +3,7 @@ package handlers
 import (
 	"day_3/models"
 	"day_3/transport"
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -12,6 +13,12 @@ import (
 func (h *handler) CreateUser(c echo.Context) error {
 	user := new(models.User)
 	c.Bind(user)
+
+	fmt.Println(user)
+	if err := c.Validate(user); err != nil {
+		return err
+	}
+
 	response := new(transport.Response)
 	result, err := h.controller.CreateUser(user)
 

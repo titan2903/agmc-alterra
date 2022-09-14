@@ -6,6 +6,7 @@ import (
 	"day_3/handlers"
 	lib "day_3/lib/repositories"
 	"day_3/middleware"
+	"fmt"
 
 	"github.com/labstack/echo/v4"
 )
@@ -18,6 +19,9 @@ func Routes() {
 	repository := lib.NewRepositories(config.GetQuery())
 	controller := controllers.NewControllers(repository)
 	handler := handlers.NewHandlers(controller)
+
+	e.Validator = middleware.NewCustomValidator()
+	fmt.Println("Validator: ", e.Validator)
 
 	e.GET("/v1/healthcheck", handler.HealthCheck)
 
