@@ -1,4 +1,4 @@
-package lib
+package repositories
 
 import (
 	"day_3/models"

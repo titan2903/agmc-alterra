@@ -1,13 +1,13 @@
 package controllers
 
 import (
-	lib "day_3/lib/repositories"
 	"day_3/models"
+	repositories "day_3/repositories"
 	"day_3/transport"
 )
 
 type controllers struct {
-	repo lib.Repositories
+	repo repositories.Repositories
 }
 
 type Controllers interface {
@@ -30,6 +30,6 @@ type Controllers interface {
 	HealthCheck() *transport.Response
 }
 
-func NewControllers(r lib.Repositories) Controllers {
+func NewControllers(r repositories.Repositories) Controllers {
 	return &controllers{repo: r}
 }

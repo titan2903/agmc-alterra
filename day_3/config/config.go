@@ -2,8 +2,8 @@ package config
 
 import (
 	"day_3/controllers"
-	lib "day_3/lib/repositories"
 	"day_3/models"
+	repositories "day_3/repositories"
 	"fmt"
 	"log"
 	"os"
@@ -29,13 +29,13 @@ func GetController() controllers.Controllers {
 }
 
 var (
-	repo    lib.Repositories
+	repo    repositories.Repositories
 	oneRepo sync.Once
 )
 
-func GetRepository() lib.Repositories {
+func GetRepository() repositories.Repositories {
 	oneRepo.Do(func() {
-		repo = lib.NewRepositories(GetQuery())
+		repo = repositories.NewRepositories(GetQuery())
 	})
 
 	return repo
