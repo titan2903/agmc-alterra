@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func Routes() {
+func Routes() *echo.Echo {
 	e := echo.New()
 
 	repository := lib.NewRepositories(config.GetQuery())
@@ -32,5 +32,5 @@ func Routes() {
 	e.PUT("/v1/books/:id", handler.UpdateBook)
 	e.DELETE("/v1/books/:id", handler.DeleteBook)
 
-	e.Logger.Fatal(e.Start(":8080"))
+	return e
 }
