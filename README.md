@@ -18,3 +18,7 @@
 ### Day 3
 
 - [Middleware(Logging, Authorization, Authentication JWT)](https://github.com/titan2903/agmc-alterra/tree/master/day_3)
+
+### Day 4
+
+- [Unit Test and Integration Tests](https://github.com/titan2903/agmc-alterra/tree/master/day_4)
