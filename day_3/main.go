@@ -6,7 +6,6 @@ import (
 	"log"
 
 	"github.com/joho/godotenv"
-	"github.com/labstack/echo/v4"
 )
 
 func main() {
@@ -16,8 +15,7 @@ func main() {
 	}
 
 	port := ":8080"
-	fmt.Printf("Successfully started on port %s\n", port)
-	routes.Routes()
-	e := echo.New()
+	e := routes.NewRoutes()
 	e.Logger.Fatal(e.Start(":8080"))
+	fmt.Printf("Successfully started on port %s\n", port)
 }

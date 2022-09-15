@@ -66,7 +66,6 @@ func GetQuery() *gorm.DB {
 		}
 
 		dsnMaster := os.Getenv("DB_DSN")
-		fmt.Println(dsnMaster)
 		dbMaster, errMaster := gorm.Open(mysql.Open(dsnMaster), gormConfig)
 		if errMaster != nil {
 			log.Panic(errMaster)

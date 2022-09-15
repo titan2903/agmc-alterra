@@ -24,6 +24,7 @@ type Controllers interface {
 	DeleteUser(id int) (*transport.Response, error)
 	GetUserById(id int) (*transport.Response, error)
 	GetAllUsers(keywords string) (*transport.Response, error)
+	UserLogin(username, password string) (*transport.Response, error)
 
 	// ! Health Check Controllers
 	HealthCheck() *transport.Response

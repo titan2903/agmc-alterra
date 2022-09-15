@@ -5,39 +5,43 @@ import (
 	"day_3/controllers"
 	"day_3/handlers"
 	lib "day_3/lib/repositories"
-	"day_3/middleware"
-	"fmt"
+	m "day_3/middleware"
 
 	"github.com/labstack/echo/v4"
 )
 
-func Routes() {
+func NewRoutes() *echo.Echo {
 	e := echo.New()
 
-	middleware.LogMiddleware(e)
+	m.LogMiddleware(e)
 
 	repository := lib.NewRepositories(config.GetQuery())
 	controller := controllers.NewControllers(repository)
 	handler := handlers.NewHandlers(controller)
 
-	e.Validator = middleware.NewCustomValidator()
-	fmt.Println("Validator: ", e.Validator)
+	e.Validator = m.NewCustomValidator()
 
 	e.GET("/v1/healthcheck", handler.HealthCheck)
 
-	//! User routes
-	e.POST("/v1/users", handler.CreateUser)
-	e.PUT("/v1/users/:id", handler.UpdateUser)
-	e.GET("/v1/users/:id", handler.GetUserById)
-	e.GET("/v1/users", handler.GetAllUsers)
-	e.DELETE("/v1/users/:id", handler.DeleteUser)
+	gJwt := e.Group("/jwt")
+	m.SetJwtMiddlewares(gJwt)
 
-	//! Book routes
-	e.POST("/v1/books", handler.CreateBook)
+	//! Main Routes
+	e.POST("/v1/users", handler.CreateUser)
+	e.POST("/v1/login", handler.UserLogin)
+
 	e.GET("/v1/books/:id", handler.GetBookById)
 	e.GET("/v1/books", handler.GetAllBooks)
-	e.PUT("/v1/books/:id", handler.UpdateBook)
-	e.DELETE("/v1/books/:id", handler.DeleteBook)
 
-	e.Logger.Fatal(e.Start(":8080"))
+	//! Authorization routes
+	gJwt.PUT("/v1/users/:id", handler.UpdateUser)
+	gJwt.GET("/v1/users/:id", handler.GetUserById)
+	gJwt.GET("/v1/users", handler.GetAllUsers)
+	gJwt.DELETE("/v1/users/:id", handler.DeleteUser)
+
+	gJwt.PUT("/v1/books/:id", handler.UpdateBook)
+	gJwt.DELETE("/v1/books/:id", handler.DeleteBook)
+	gJwt.POST("/v1/books", handler.CreateBook)
+
+	return e
 }

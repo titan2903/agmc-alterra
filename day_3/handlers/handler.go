@@ -20,6 +20,7 @@ type Handlers interface {
 	GetUserById(c echo.Context) error
 	GetAllUsers(c echo.Context) error
 	DeleteUser(c echo.Context) error
+	UserLogin(c echo.Context) error
 
 	//! Book Handler
 	CreateBook(c echo.Context) error

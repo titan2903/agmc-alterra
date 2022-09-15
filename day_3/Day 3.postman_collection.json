@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "6df1bf5c-985e-49b6-a469-3ce877e0b620",
-		"name": "Day 2",
+		"_postman_id": "8610449d-8c13-45ab-8953-6b7f3f7922f2",
+		"name": "Day 3",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12510739"
 	},
@@ -84,11 +84,21 @@
 						{
 							"name": "v1UpdateBookById",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Maling Kandang\",\n    \"writer\": \"John Doe\"\n}",
+									"raw": "{\n    \"title\": \"Si Kancil\",\n    \"writer\": \"John Doe\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -96,11 +106,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/v1/books/:id",
+									"raw": "{{base_url}}/jwt/v1/books/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
+										"jwt",
 										"v1",
 										"books",
 										":id"
@@ -121,7 +132,7 @@
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"title\": \"Maling Kandang\",\n    \"writer\": \"John Doe\"\n}",
+											"raw": "{\n    \"title\": \"Si Kancil\",\n    \"writer\": \"John Doe\"\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -129,11 +140,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{base_url}}/v1/books/:id",
+											"raw": "{{base_url}}/jwt/v1/books/:id",
 											"host": [
 												"{{base_url}}"
 											],
 											"path": [
+												"jwt",
 												"v1",
 												"books",
 												":id"
@@ -156,7 +168,7 @@
 										},
 										{
 											"key": "Date",
-											"value": "Wed, 14 Sep 2022 05:53:42 GMT"
+											"value": "Thu, 15 Sep 2022 07:53:04 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -171,14 +183,25 @@
 						{
 							"name": "v1DeleteBookById",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/v1/books/:id",
+									"raw": "{{base_url}}/jwt/v1/books/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
+										"jwt",
 										"v1",
 										"books",
 										":id"
@@ -198,11 +221,12 @@
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{base_url}}/v1/books/:id",
+											"raw": "{{base_url}}/jwt/v1/books/:id",
 											"host": [
 												"{{base_url}}"
 											],
 											"path": [
+												"jwt",
 												"v1",
 												"books",
 												":id"
@@ -225,7 +249,7 @@
 										},
 										{
 											"key": "Date",
-											"value": "Wed, 14 Sep 2022 05:54:04 GMT"
+											"value": "Thu, 15 Sep 2022 07:53:35 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -282,26 +306,36 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 14 Sep 2022 05:51:38 GMT"
+									"value": "Thu, 15 Sep 2022 07:52:12 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "465"
+									"value": "476"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success get all books\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Si Kancil\",\n            \"writer\": \"John Doe\",\n            \"created_at\": \"2022-09-14T05:50:41.377Z\",\n            \"updated_at\": \"2022-09-14T05:50:41.377Z\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Si Buaya\",\n            \"writer\": \"John Doe\",\n            \"created_at\": \"2022-09-14T05:50:53.033Z\",\n            \"updated_at\": \"2022-09-14T05:50:53.033Z\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Malin Kundang\",\n            \"writer\": \"John Doe\",\n            \"created_at\": \"2022-09-14T05:51:24.203Z\",\n            \"updated_at\": \"2022-09-14T05:51:24.203Z\"\n        }\n    ]\n}"
+							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success get all books\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"Malin Kundang\",\n            \"writer\": \"John Doe\",\n            \"created_at\": \"2022-09-15T07:50:57.701Z\",\n            \"updated_at\": \"2022-09-15T07:50:57.701Z\"\n        },\n        {\n            \"id\": 2,\n            \"title\": \"Maling Kundang\",\n            \"writer\": \"John Doe\",\n            \"created_at\": \"2022-09-15T07:51:30.988Z\",\n            \"updated_at\": \"2022-09-15T07:51:30.988Z\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Maling Kandang\",\n            \"writer\": \"John Doe\",\n            \"created_at\": \"2022-09-15T07:51:37.091Z\",\n            \"updated_at\": \"2022-09-15T07:51:37.091Z\"\n        }\n    ]\n}"
 						}
 					]
 				},
 				{
 					"name": "v1CreateBook",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Malin Kundang\",\n    \"writer\": \"John Doe\"\n}",
+							"raw": "{\n    \"title\": \"Maling Kandang\",\n    \"writer\": \"John Doe\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -309,11 +343,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/v1/books",
+							"raw": "{{base_url}}/jwt/v1/books",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
+								"jwt",
 								"v1",
 								"books"
 							]
@@ -327,7 +362,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"title\": \"Malin Kundang\",\n    \"writer\": \"John Doe\"\n}",
+									"raw": "{\n    \"title\": \"Maling Kandang\",\n    \"writer\": \"John Doe\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -335,11 +370,12 @@
 									}
 								},
 								"url": {
-									"raw": "{{base_url}}/v1/books",
+									"raw": "{{base_url}}/jwt/v1/books",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
+										"jwt",
 										"v1",
 										"books"
 									]
@@ -355,7 +391,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 14 Sep 2022 05:51:24 GMT"
+									"value": "Thu, 15 Sep 2022 07:51:37 GMT"
 								},
 								{
 									"key": "Content-Length",
@@ -378,92 +414,25 @@
 						{
 							"name": "v1GetUserById",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/v1/users/:id",
+									"raw": "{{base_url}}/jwt/v1/users/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
-										"v1",
-										"users",
-										":id"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "2"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "Success",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{base_url}}/v1/users/:id",
-											"host": [
-												"{{base_url}}"
-											],
-											"path": [
-												"v1",
-												"users",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "2"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json; charset=UTF-8"
-										},
-										{
-											"key": "Date",
-											"value": "Wed, 14 Sep 2022 05:16:44 GMT"
-										},
-										{
-											"key": "Content-Length",
-											"value": "199"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success get user\",\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"John Doe\",\n        \"email\": \"test@mail.com\",\n        \"created_at\": \"2022-09-14T05:16:27.666Z\",\n        \"updated_at\": \"2022-09-14T05:16:27.666Z\"\n    }\n}"
-								}
-							]
-						},
-						{
-							"name": "v1UpdateUserById",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"name\": \"John Doe Update\",\n    \"email\": \"testupdate@mail.com\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{base_url}}/v1/users/:id",
-									"host": [
-										"{{base_url}}"
-									],
-									"path": [
+										"jwt",
 										"v1",
 										"users",
 										":id"
@@ -480,23 +449,15 @@
 								{
 									"name": "Success",
 									"originalRequest": {
-										"method": "PUT",
+										"method": "GET",
 										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"name\": \"John Doe Update\",\n    \"email\": \"testupdate@mail.com\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
 										"url": {
-											"raw": "{{base_url}}/v1/users/:id",
+											"raw": "{{base_url}}/jwt/v1/users/:id",
 											"host": [
 												"{{base_url}}"
 											],
 											"path": [
+												"jwt",
 												"v1",
 												"users",
 												":id"
@@ -519,29 +480,49 @@
 										},
 										{
 											"key": "Date",
-											"value": "Wed, 14 Sep 2022 04:35:13 GMT"
+											"value": "Thu, 15 Sep 2022 07:56:21 GMT"
 										},
 										{
 											"key": "Content-Length",
-											"value": "79"
+											"value": "200"
 										}
 									],
 									"cookie": [],
-									"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success to update user\",\n    \"data\": null\n}"
+									"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success get user\",\n    \"data\": {\n        \"id\": 1,\n        \"username\": \"test1\",\n        \"email\": \"test@mail.com\",\n        \"created_at\": \"2022-09-15T00:25:54.382Z\",\n        \"updated_at\": \"2022-09-15T00:25:54.382Z\"\n    }\n}"
 								}
 							]
 						},
 						{
-							"name": "v1DeleteUserById",
+							"name": "v1UpdateUserById",
 							"request": {
-								"method": "DELETE",
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
 								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"test1\",\n    \"email\": \"testupdate@mail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{base_url}}/v1/users/:id",
+									"raw": "{{base_url}}/jwt/v1/users/:id",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
+										"jwt",
 										"v1",
 										"users",
 										":id"
@@ -556,16 +537,79 @@
 							},
 							"response": [
 								{
-									"name": "Success",
+									"name": "Failed",
 									"originalRequest": {
-										"method": "DELETE",
+										"method": "PUT",
 										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"username\": \"test1\",\n    \"email\": \"testupdate@mail.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
 										"url": {
-											"raw": "{{base_url}}/v1/users/:id",
+											"raw": "{{base_url}}/jwt/v1/users/:id",
 											"host": [
 												"{{base_url}}"
 											],
 											"path": [
+												"jwt",
+												"v1",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Sep 2022 07:56:37 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "77"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 400,\n    \"status\": \"failed\",\n    \"message\": \"Failed to update user\",\n    \"data\": null\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"username\": \"test1\",\n    \"email\": \"testupdate@mail.com\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/jwt/v1/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"jwt",
 												"v1",
 												"users",
 												":id"
@@ -588,7 +632,132 @@
 										},
 										{
 											"key": "Date",
-											"value": "Wed, 14 Sep 2022 06:26:02 GMT"
+											"value": "Thu, 15 Sep 2022 07:57:06 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "79"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success to update user\",\n    \"data\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "v1DeleteUserById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/jwt/v1/users/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"jwt",
+										"v1",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Failed",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/jwt/v1/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"jwt",
+												"v1",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Sep 2022 07:57:29 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "77"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 400,\n    \"status\": \"failed\",\n    \"message\": \"Failed to delete user\",\n    \"data\": null\n}"
+								},
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/jwt/v1/users/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"jwt",
+												"v1",
+												"users",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 15 Sep 2022 07:57:51 GMT"
 										},
 										{
 											"key": "Content-Length",
@@ -605,16 +774,34 @@
 				{
 					"name": "v1GetUsers",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{base_url}}/v1/users",
+							"raw": "{{base_url}}/jwt/v1/users",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
+								"jwt",
 								"v1",
 								"users"
+							],
+							"query": [
+								{
+									"key": "keywords",
+									"value": "test2",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -625,13 +812,21 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{base_url}}/v1/users",
+									"raw": "{{base_url}}/jwt/v1/users",
 									"host": [
 										"{{base_url}}"
 									],
 									"path": [
+										"jwt",
 										"v1",
 										"users"
+									],
+									"query": [
+										{
+											"key": "keywords",
+											"value": "test2",
+											"disabled": true
+										}
 									]
 								}
 							},
@@ -645,15 +840,15 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 14 Sep 2022 05:16:31 GMT"
+									"value": "Thu, 15 Sep 2022 07:59:03 GMT"
 								},
 								{
 									"key": "Content-Length",
-									"value": "335"
+									"value": "349"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success get all users\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"John Doe\",\n            \"email\": \"test@mail.com\",\n            \"created_at\": \"2022-09-14T05:15:55.66Z\",\n            \"updated_at\": \"2022-09-14T05:15:55.66Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"John Doe\",\n            \"email\": \"test@mail.com\",\n            \"created_at\": \"2022-09-14T05:16:27.666Z\",\n            \"updated_at\": \"2022-09-14T05:16:27.666Z\"\n        }\n    ]\n}"
+							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success get all users\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"username\": \"test1\",\n            \"email\": \"testupdate@mail.com\",\n            \"created_at\": \"2022-09-15T00:25:54.382Z\",\n            \"updated_at\": \"2022-09-15T07:56:37.209Z\"\n        },\n        {\n            \"id\": 2,\n            \"username\": \"test1\",\n            \"email\": \"testupdate@mail.com\",\n            \"created_at\": \"2022-09-15T00:27:29.7Z\",\n            \"updated_at\": \"2022-09-15T07:57:06.569Z\"\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -664,7 +859,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\": \"1234\",\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"test@mail.com\"\r\n}",
+							"raw": "{\r\n    \"password\": \"1234\",\r\n    \"username\": \"test2\",\r\n    \"email\": \"test2@mail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -729,6 +924,79 @@
 							"body": "{\n    \"code\": 201,\n    \"status\": \"success\",\n    \"message\": \"Success to create user\",\n    \"data\": null\n}"
 						}
 					]
+				},
+				{
+					"name": "v1Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"1234\",\n    \"username\": \"test2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/v1/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\": \"1234\",\n    \"username\": \"test2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/v1/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 15 Sep 2022 07:49:28 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "273"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success Login\",\n    \"data\": {\n        \"id\": 2,\n        \"username\": \"test2\",\n        \"email\": \"test2@mail.com\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NjMyMjk5NjgsInVzZXJJZCI6Mn0.xqSMJhVWGujddxVRzxQQBCXtFuyfKh2YNL_nQQRYYuM\"\n    }\n}"
+						}
+					]
 				}
 			]
 		}
@@ -757,6 +1025,11 @@
 		{
 			"key": "base_url",
 			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NjMyMjk5NjgsInVzZXJJZCI6Mn0.xqSMJhVWGujddxVRzxQQBCXtFuyfKh2YNL_nQQRYYuM",
 			"type": "string"
 		}
 	]

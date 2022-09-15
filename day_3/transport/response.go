@@ -14,7 +14,7 @@ type (
 
 	UserMapping struct {
 		ID        int       `json:"id"`
-		Name      string    `json:"name"`
+		Username  string    `json:"username"`
 		Email     string    `json:"email"`
 		CreatedAt time.Time `json:"created_at"`
 		UpdatedAt time.Time `json:"updated_at"`
@@ -26,5 +26,12 @@ type (
 		Writer    string    `json:"writer"`
 		CreatedAt time.Time `json:"created_at"`
 		UpdatedAt time.Time `json:"updated_at"`
+	}
+
+	LoginResponse struct {
+		ID       int    `json:"id"`
+		Username string `json:"username"`
+		Email    string `json:"email"`
+		Token    string `json:"token"`
 	}
 )

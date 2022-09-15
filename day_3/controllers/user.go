@@ -1,9 +1,12 @@
 package controllers
 
 import (
+	m "day_3/middleware"
 	"day_3/models"
 	"day_3/transport"
 	"day_3/utils"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 func (c *controllers) CreateUser(user *models.User) (*transport.Response, error) {
@@ -11,7 +14,7 @@ func (c *controllers) CreateUser(user *models.User) (*transport.Response, error)
 	hash, _ := utils.HashPassword(user.Password)
 	userMapping := &models.User{
 		Password: hash,
-		Name:     user.Name,
+		Username: user.Username,
 		Email:    user.Email,
 	}
 
@@ -32,8 +35,8 @@ func (c *controllers) CreateUser(user *models.User) (*transport.Response, error)
 
 func (c *controllers) UpdateUser(user *models.User, id int) (*transport.Response, error) {
 	userMapping := &models.User{
-		Name:  user.Name,
-		Email: user.Email,
+		Username: user.Username,
+		Email:    user.Email,
 	}
 
 	err := c.repo.UpdateUser(userMapping, id)
@@ -76,7 +79,7 @@ func (c *controllers) GetUserById(id int) (*transport.Response, error) {
 	}
 
 	userMapping := &transport.UserMapping{
-		Name:      user.Name,
+		Username:  user.Username,
 		Email:     user.Email,
 		ID:        user.ID,
 		CreatedAt: user.CreatedAt,
@@ -101,7 +104,7 @@ func (c *controllers) GetAllUsers(keywords string) (*transport.Response, error) 
 	var arrUsers []transport.UserMapping
 	for _, user := range users {
 		userMapping := transport.UserMapping{
-			Name:      user.Name,
+			Username:  user.Username,
 			Email:     user.Email,
 			ID:        user.ID,
 			CreatedAt: user.CreatedAt,
@@ -116,6 +119,35 @@ func (c *controllers) GetAllUsers(keywords string) (*transport.Response, error) 
 		Status:  "success",
 		Message: "Success get all users",
 		Data:    arrUsers,
+	}
+	return result, nil
+}
+
+func (c *controllers) UserLogin(username, password string) (*transport.Response, error) {
+	user, err := c.repo.UserLogin(username)
+	if err != nil {
+		return nil, err
+	}
+
+	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
+		// If the two passwords don't match, return a 401 status.
+		return nil, err
+	}
+
+	userReplicated := transport.LoginResponse{}
+	userReplicated.Email = user.Email
+	userReplicated.Username = user.Username
+	userReplicated.ID = user.ID
+	userReplicated.Token, err = m.CreateToken(int(user.ID))
+	if err != nil {
+		return nil, err
+	}
+
+	result := &transport.Response{
+		Code:    200,
+		Status:  "success",
+		Message: "Success Login",
+		Data:    userReplicated,
 	}
 	return result, nil
 }

@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/go-playground/validator/v10"
@@ -23,6 +22,5 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 		// Optionally, you could return the error to give each route more control over the status code
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
-	fmt.Println("masuk")
 	return nil
 }

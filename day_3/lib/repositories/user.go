@@ -2,7 +2,6 @@ package lib
 
 import (
 	"day_3/models"
-	"fmt"
 )
 
 func (r *repositories) CreateUser(user *models.User) error {
@@ -30,13 +29,18 @@ func (r *repositories) DeleteUser(id int) error {
 func (r *repositories) GetUserById(id int) (models.User, error) {
 	var user models.User
 	result := r.db.Where("id = ?", id).First(&user)
-	fmt.Println(result)
 	return user, result.Error
 }
 
 func (r *repositories) GetAllUsers(keywords string) ([]models.User, error) {
 	var users []models.User
-	result := r.db.Where("email LIKE ? OR name LIKE ?", "%"+keywords+"%", "%"+keywords+"%").Find(&users)
+	result := r.db.Where("email LIKE ? OR username LIKE ?", "%"+keywords+"%", "%"+keywords+"%").Find(&users)
 
 	return users, result.Error
+}
+
+func (r *repositories) UserLogin(username string) (models.User, error) {
+	var user models.User
+	result := r.db.Where("username = ?", username).First(&user)
+	return user, result.Error
 }

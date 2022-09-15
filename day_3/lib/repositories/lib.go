@@ -24,6 +24,7 @@ type Repositories interface {
 	DeleteUser(id int) error
 	GetUserById(id int) (models.User, error)
 	GetAllUsers(keywords string) ([]models.User, error)
+	UserLogin(username string) (models.User, error)
 }
 
 func NewRepositories(

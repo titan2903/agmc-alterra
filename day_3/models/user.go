@@ -9,7 +9,7 @@ import (
 type User struct {
 	gorm.Model
 	ID        int            `json:"id" form:"id"`
-	Name      string         `json:"name" form:"name" validate:"required"`
+	Username  string         `json:"username" form:"username" validate:"required"`
 	Email     string         `json:"email" form:"email" validate:"required,email"`
 	Password  string         `json:"password" form:"password" validate:"required"`
 	CreatedAt time.Time      `json:"created_at" form:"created_at"`
