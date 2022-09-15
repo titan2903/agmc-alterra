@@ -21,12 +21,12 @@ func NewRoutes() *echo.Echo {
 
 	e.Validator = m.NewCustomValidator()
 
-	e.GET("/v1/healthcheck", handler.HealthCheck)
-
 	gJwt := e.Group("/jwt")
 	m.SetJwtMiddlewares(gJwt)
 
 	//! Main Routes
+	e.GET("/v1/healthcheck", handler.HealthCheck)
+
 	e.POST("/v1/users", handler.CreateUser)
 	e.POST("/v1/login", handler.UserLogin)
 
