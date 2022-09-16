@@ -1,8 +1,10 @@
 package handlers
 
 import (
+	"day_4/config"
 	"day_4/mock"
-	"fmt"
+	"day_4/repositories"
+	"day_4/services"
 	"net/http"
 	"testing"
 
@@ -10,29 +12,25 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-var (
-	echoMock = mock.EchoMock{E: echo.New()}
-	h        = new(handler)
-)
+func TestHealthCheck(t *testing.T) {
+	t.Parallel()
 
-func TestHealthCheckSuccess(t *testing.T) {
-	c, rec := echoMock.RequestMock(http.MethodGet, "/", nil)
-	fmt.Println("============== rec", rec)
-	fmt.Println("============== rec", rec.Code)
-	c.SetPath("/v1/healthcheck")
+	var (
+		echoMock   = mock.EchoMock{E: echo.New()}
+		repository = repositories.NewRepositories(config.GetQuery())
+		service    = services.NewServices(repository)
+		h          = NewHandlers(service)
+	)
 
-	asserts := assert.New(t)
+	t.Run("success", func(t *testing.T) {
 
-	// testing
-	if asserts.NoError(h.HealthCheck(c)) {
-		fmt.Println("====================masuk")
-		asserts.Equal(200, rec.Code)
+		c, rec := echoMock.RequestMock(http.MethodGet, "/", nil)
+		c.SetPath("/v1/healthcheck")
 
-		// body := rec.Body.String()
-		// fmt.Println(body)
-		// asserts.Contains(body, "code")
-		// asserts.Contains(body, "status")
-		// asserts.Contains(body, "message")
-		// asserts.Contains(body, "data")
-	}
+		//! asserts
+		asserts := assert.New(t)
+		if asserts.NoError(h.HealthCheck(c)) {
+			asserts.Equal(200, rec.Code)
+		}
+	})
 }

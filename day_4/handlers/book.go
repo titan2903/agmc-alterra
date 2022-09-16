@@ -19,12 +19,13 @@ func (h *handler) CreateBook(c echo.Context) error {
 		response.Code = 400
 		response.Status = "failed"
 		response.Message = "Failed to create book"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusBadRequest, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
 	return c.JSON(http.StatusCreated, response)
 }
 
@@ -37,15 +38,16 @@ func (h *handler) UpdateBook(c echo.Context) error {
 	result, err := h.service.UpdateBook(book, idInt)
 
 	if err != nil {
-		response.Code = 400
+		response.Code = 404
 		response.Status = "failed"
 		response.Message = "Failed to update book"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusNotFound, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -58,15 +60,17 @@ func (h *handler) DeleteBook(c echo.Context) error {
 	result, err := h.service.DeleteBook(idInt)
 
 	if err != nil {
-		response.Code = 400
+		response.Code = 404
 		response.Status = "failed"
 		response.Message = "Failed to delete book"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusNotFound, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
+
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -80,12 +84,14 @@ func (h *handler) GetBookById(c echo.Context) error {
 		response.Code = 404
 		response.Status = "failed"
 		response.Message = "Book not found"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusNotFound, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
+
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -97,11 +103,12 @@ func (h *handler) GetAllBooks(c echo.Context) error {
 		response.Code = 404
 		response.Status = "failed"
 		response.Message = "Books not found"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusNotFound, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
 	return c.JSON(http.StatusOK, response)
 }

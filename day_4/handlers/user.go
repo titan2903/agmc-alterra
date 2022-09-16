@@ -25,12 +25,13 @@ func (h *handler) CreateUser(c echo.Context) error {
 		response.Code = 400
 		response.Status = "failed"
 		response.Message = "Failed to create user"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusBadRequest, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
 	return c.JSON(http.StatusCreated, response)
 }
 
@@ -44,15 +45,16 @@ func (h *handler) UpdateUser(c echo.Context) error {
 	result, err := h.service.UpdateUser(user, idInt)
 
 	if err != nil || float64(idInt) != extractToken {
-		response.Code = 400
+		response.Code = 404
 		response.Status = "failed"
 		response.Message = "Failed to update user"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusNotFound, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -68,15 +70,17 @@ func (h *handler) DeleteUser(c echo.Context) error {
 	result, err := h.service.DeleteUser(idInt)
 
 	if err != nil || float64(idInt) != extractToken {
-		response.Code = 400
+		response.Code = 404
 		response.Status = "failed"
 		response.Message = "Failed to delete user"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusNotFound, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
+
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -90,12 +94,14 @@ func (h *handler) GetUserById(c echo.Context) error {
 		response.Code = 404
 		response.Status = "failed"
 		response.Message = "User not found"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusNotFound, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
+
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -107,12 +113,14 @@ func (h *handler) GetAllUsers(c echo.Context) error {
 		response.Code = 404
 		response.Status = "failed"
 		response.Message = "Users not found"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusNotFound, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
+
 	return c.JSON(http.StatusOK, response)
 }
 
@@ -123,14 +131,16 @@ func (h *handler) UserLogin(c echo.Context) error {
 	result, err := h.service.UserLogin(user.Username, user.Password)
 
 	if err != nil {
-		response.Code = 404
+		response.Code = 400
 		response.Status = "failed"
 		response.Message = "Login failed"
-	} else {
-		response.Code = result.Code
-		response.Status = result.Status
-		response.Message = result.Message
-		response.Data = result.Data
+		return c.JSON(http.StatusBadRequest, response)
 	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
+
 	return c.JSON(http.StatusOK, response)
 }
