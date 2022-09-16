@@ -1,13 +1,13 @@
 package handlers
 
 import (
-	"day_4/controllers"
+	"day_4/services"
 
 	"github.com/labstack/echo/v4"
 )
 
 type handler struct {
-	controller controllers.Controllers
+	service services.Services
 }
 
 type Handlers interface {
@@ -30,6 +30,6 @@ type Handlers interface {
 	GetAllBooks(c echo.Context) error
 }
 
-func NewHandlers(controller controllers.Controllers) Handlers {
-	return &handler{controller: controller}
+func NewHandlers(service services.Services) Handlers {
+	return &handler{service: service}
 }

@@ -13,7 +13,7 @@ func (h *handler) CreateBook(c echo.Context) error {
 	book := new(models.Book)
 	c.Bind(book)
 	response := new(transport.Response)
-	result, err := h.controller.CreateBook(book)
+	result, err := h.service.CreateBook(book)
 
 	if err != nil {
 		response.Code = 400
@@ -34,7 +34,7 @@ func (h *handler) UpdateBook(c echo.Context) error {
 	id := c.Param("id")
 	idInt, _ := strconv.Atoi(id)
 	response := new(transport.Response)
-	result, err := h.controller.UpdateBook(book, idInt)
+	result, err := h.service.UpdateBook(book, idInt)
 
 	if err != nil {
 		response.Code = 400
@@ -55,7 +55,7 @@ func (h *handler) DeleteBook(c echo.Context) error {
 	id := c.Param("id")
 	idInt, _ := strconv.Atoi(id)
 	response := new(transport.Response)
-	result, err := h.controller.DeleteBook(idInt)
+	result, err := h.service.DeleteBook(idInt)
 
 	if err != nil {
 		response.Code = 400
@@ -74,7 +74,7 @@ func (h *handler) GetBookById(c echo.Context) error {
 	id := c.Param("id")
 	idInt, _ := strconv.Atoi(id)
 	response := new(transport.Response)
-	result, err := h.controller.GetBookById(idInt)
+	result, err := h.service.GetBookById(idInt)
 
 	if err != nil {
 		response.Code = 404
@@ -91,7 +91,7 @@ func (h *handler) GetBookById(c echo.Context) error {
 
 func (h *handler) GetAllBooks(c echo.Context) error {
 	response := new(transport.Response)
-	result, err := h.controller.GetAllBooks(c.QueryParam("keywords"))
+	result, err := h.service.GetAllBooks(c.QueryParam("keywords"))
 
 	if err != nil {
 		response.Code = 404

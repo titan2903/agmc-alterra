@@ -19,7 +19,7 @@ func (h *handler) CreateUser(c echo.Context) error {
 	}
 
 	response := new(transport.Response)
-	result, err := h.controller.CreateUser(user)
+	result, err := h.service.CreateUser(user)
 
 	if err != nil {
 		response.Code = 400
@@ -41,7 +41,7 @@ func (h *handler) UpdateUser(c echo.Context) error {
 	idInt, _ := strconv.Atoi(id)
 	response := new(transport.Response)
 	extractToken := m.ExtractTokenUserId(c)
-	result, err := h.controller.UpdateUser(user, idInt)
+	result, err := h.service.UpdateUser(user, idInt)
 
 	if err != nil || float64(idInt) != extractToken {
 		response.Code = 400
@@ -65,7 +65,7 @@ func (h *handler) DeleteUser(c echo.Context) error {
 
 	extractToken := m.ExtractTokenUserId(c)
 
-	result, err := h.controller.DeleteUser(idInt)
+	result, err := h.service.DeleteUser(idInt)
 
 	if err != nil || float64(idInt) != extractToken {
 		response.Code = 400
@@ -84,7 +84,7 @@ func (h *handler) GetUserById(c echo.Context) error {
 	id := c.Param("id")
 	idInt, _ := strconv.Atoi(id)
 	response := new(transport.Response)
-	result, err := h.controller.GetUserById(idInt)
+	result, err := h.service.GetUserById(idInt)
 
 	if err != nil {
 		response.Code = 404
@@ -101,7 +101,7 @@ func (h *handler) GetUserById(c echo.Context) error {
 
 func (h *handler) GetAllUsers(c echo.Context) error {
 	response := new(transport.Response)
-	result, err := h.controller.GetAllUsers(c.QueryParam("keywords"))
+	result, err := h.service.GetAllUsers(c.QueryParam("keywords"))
 
 	if err != nil {
 		response.Code = 404
@@ -120,7 +120,7 @@ func (h *handler) UserLogin(c echo.Context) error {
 	response := new(transport.Response)
 	user := new(models.User)
 	c.Bind(user)
-	result, err := h.controller.UserLogin(user.Username, user.Password)
+	result, err := h.service.UserLogin(user.Username, user.Password)
 
 	if err != nil {
 		response.Code = 404

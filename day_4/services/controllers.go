@@ -1,4 +1,4 @@
-package controllers
+package services
 
 import (
 	"day_4/models"
@@ -6,19 +6,19 @@ import (
 	"day_4/transport"
 )
 
-type controllers struct {
+type services struct {
 	repo repositories.Repositories
 }
 
-type Controllers interface {
-	// ! Book Controllers
+type Services interface {
+	// ! Book Services
 	CreateBook(book *models.Book) (*transport.Response, error)
 	UpdateBook(book *models.Book, id int) (*transport.Response, error)
 	DeleteBook(id int) (*transport.Response, error)
 	GetBookById(id int) (*transport.Response, error)
 	GetAllBooks(keywords string) (*transport.Response, error)
 
-	// ! User Controllers
+	// ! User Services
 	CreateUser(user *models.User) (*transport.Response, error)
 	UpdateUser(user *models.User, id int) (*transport.Response, error)
 	DeleteUser(id int) (*transport.Response, error)
@@ -26,10 +26,10 @@ type Controllers interface {
 	GetAllUsers(keywords string) (*transport.Response, error)
 	UserLogin(username, password string) (*transport.Response, error)
 
-	// ! Health Check Controllers
+	// ! Health Check Services
 	HealthCheck() *transport.Response
 }
 
-func NewControllers(r repositories.Repositories) Controllers {
-	return &controllers{repo: r}
+func NewServices(r repositories.Repositories) Services {
+	return &services{repo: r}
 }

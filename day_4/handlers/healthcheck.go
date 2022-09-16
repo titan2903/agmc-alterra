@@ -7,6 +7,6 @@ import (
 )
 
 func (h *handler) HealthCheck(c echo.Context) error {
-	result := h.controller.HealthCheck()
+	result := h.service.HealthCheck()
 	return c.JSON(http.StatusOK, result)
 }

@@ -1,4 +1,4 @@
-package controllers
+package services
 
 import (
 	m "day_4/middleware"
@@ -9,7 +9,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func (c *controllers) CreateUser(user *models.User) (*transport.Response, error) {
+func (c *services) CreateUser(user *models.User) (*transport.Response, error) {
 
 	hash, _ := utils.HashPassword(user.Password)
 	userMapping := &models.User{
@@ -33,7 +33,7 @@ func (c *controllers) CreateUser(user *models.User) (*transport.Response, error)
 	return result, err
 }
 
-func (c *controllers) UpdateUser(user *models.User, id int) (*transport.Response, error) {
+func (c *services) UpdateUser(user *models.User, id int) (*transport.Response, error) {
 	userMapping := &models.User{
 		Username: user.Username,
 		Email:    user.Email,
@@ -54,7 +54,7 @@ func (c *controllers) UpdateUser(user *models.User, id int) (*transport.Response
 	return result, nil
 }
 
-func (c *controllers) DeleteUser(id int) (*transport.Response, error) {
+func (c *services) DeleteUser(id int) (*transport.Response, error) {
 
 	err := c.repo.DeleteUser(id)
 	if err != nil {
@@ -71,7 +71,7 @@ func (c *controllers) DeleteUser(id int) (*transport.Response, error) {
 	return result, nil
 }
 
-func (c *controllers) GetUserById(id int) (*transport.Response, error) {
+func (c *services) GetUserById(id int) (*transport.Response, error) {
 
 	user, err := c.repo.GetUserById(id)
 	if err != nil {
@@ -95,7 +95,7 @@ func (c *controllers) GetUserById(id int) (*transport.Response, error) {
 	return result, nil
 }
 
-func (c *controllers) GetAllUsers(keywords string) (*transport.Response, error) {
+func (c *services) GetAllUsers(keywords string) (*transport.Response, error) {
 	users, err := c.repo.GetAllUsers(keywords)
 	if err != nil {
 		return nil, err
@@ -123,7 +123,7 @@ func (c *controllers) GetAllUsers(keywords string) (*transport.Response, error) 
 	return result, nil
 }
 
-func (c *controllers) UserLogin(username, password string) (*transport.Response, error) {
+func (c *services) UserLogin(username, password string) (*transport.Response, error) {
 	user, err := c.repo.UserLogin(username)
 	if err != nil {
 		return nil, err

@@ -1,11 +1,11 @@
-package controllers
+package services
 
 import (
 	"day_4/models"
 	"day_4/transport"
 )
 
-func (c *controllers) CreateBook(book *models.Book) (*transport.Response, error) {
+func (c *services) CreateBook(book *models.Book) (*transport.Response, error) {
 	bookMapping := &models.Book{
 		Title:  book.Title,
 		Writer: book.Writer,
@@ -26,7 +26,7 @@ func (c *controllers) CreateBook(book *models.Book) (*transport.Response, error)
 	return result, err
 }
 
-func (c *controllers) UpdateBook(book *models.Book, id int) (*transport.Response, error) {
+func (c *services) UpdateBook(book *models.Book, id int) (*transport.Response, error) {
 	bookMapping := &models.Book{
 		Title:  book.Title,
 		Writer: book.Writer,
@@ -47,7 +47,7 @@ func (c *controllers) UpdateBook(book *models.Book, id int) (*transport.Response
 	return result, nil
 }
 
-func (c *controllers) DeleteBook(id int) (*transport.Response, error) {
+func (c *services) DeleteBook(id int) (*transport.Response, error) {
 	err := c.repo.DeleteBook(id)
 	if err != nil {
 		return nil, err
@@ -63,7 +63,7 @@ func (c *controllers) DeleteBook(id int) (*transport.Response, error) {
 	return result, nil
 }
 
-func (c *controllers) GetBookById(id int) (*transport.Response, error) {
+func (c *services) GetBookById(id int) (*transport.Response, error) {
 	book, err := c.repo.GetBookById(id)
 	if err != nil {
 		return nil, err
@@ -86,7 +86,7 @@ func (c *controllers) GetBookById(id int) (*transport.Response, error) {
 	return result, nil
 }
 
-func (c *controllers) GetAllBooks(keywords string) (*transport.Response, error) {
+func (c *services) GetAllBooks(keywords string) (*transport.Response, error) {
 	books, err := c.repo.GetAllBooks(keywords)
 	if err != nil {
 		return nil, err

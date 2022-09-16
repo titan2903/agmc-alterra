@@ -1,10 +1,10 @@
-package controllers
+package services
 
 import (
 	"day_4/transport"
 )
 
-func (c *controllers) HealthCheck() *transport.Response {
+func (c *services) HealthCheck() *transport.Response {
 	return &transport.Response{
 		Code:    200,
 		Status:  "success",

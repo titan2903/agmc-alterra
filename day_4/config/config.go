@@ -1,9 +1,9 @@
 package config
 
 import (
-	"day_4/controllers"
 	"day_4/models"
 	repositories "day_4/repositories"
+	"day_4/services"
 	"fmt"
 	"log"
 	"os"
@@ -16,13 +16,13 @@ import (
 )
 
 var (
-	c            controllers.Controllers
+	c            services.Services
 	onController sync.Once
 )
 
-func GetController() controllers.Controllers {
+func GetController() services.Services {
 	onController.Do(func() {
-		c = controllers.NewControllers(GetRepository())
+		c = services.NewServices(GetRepository())
 	})
 
 	return c

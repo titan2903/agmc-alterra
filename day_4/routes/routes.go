@@ -2,10 +2,10 @@ package routes
 
 import (
 	"day_4/config"
-	"day_4/controllers"
 	"day_4/handlers"
 	m "day_4/middleware"
 	repositories "day_4/repositories"
+	"day_4/services"
 
 	"github.com/labstack/echo/v4"
 )
@@ -16,8 +16,8 @@ func NewRoutes() *echo.Echo {
 	m.LogMiddleware(e)
 
 	repository := repositories.NewRepositories(config.GetQuery())
-	controller := controllers.NewControllers(repository)
-	handler := handlers.NewHandlers(controller)
+	service := services.NewServices(repository)
+	handler := handlers.NewHandlers(service)
 
 	e.Validator = m.NewCustomValidator()
 
