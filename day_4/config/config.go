@@ -65,7 +65,9 @@ func GetQuery() *gorm.DB {
 			Logger:                 dbLogger,
 		}
 
-		dsnMaster := os.Getenv("DB_DSN")
+		// dsnMaster := os.Getenv("DB_DSN")
+		dsnMaster := "root:password@tcp(127.0.0.1:3306)/day3?parseTime=true" //! Uncomment if you want running the go test
+		// dsnMaster := "root:your_password@tcp(127.0.0.1:your_port)/your_database_name?parseTime=true" //! Uncomment if you want running the go test
 		dbMaster, errMaster := gorm.Open(mysql.Open(dsnMaster), gormConfig)
 		if errMaster != nil {
 			log.Panic(errMaster)

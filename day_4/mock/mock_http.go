@@ -1,7 +1,6 @@
 package mock
 
 import (
-	"fmt"
 	"io"
 	"net/http/httptest"
 
@@ -20,8 +19,6 @@ func (em *EchoMock) RequestMock(method, path string, body io.Reader) (echo.Conte
 	req := httptest.NewRequest(method, path, body)
 	rec := httptest.NewRecorder()
 	c := em.E.NewContext(req, rec)
-	fmt.Println("============== c ===========", c)
-	fmt.Println("============== rec ===========", rec)
 
 	return c, rec
 }

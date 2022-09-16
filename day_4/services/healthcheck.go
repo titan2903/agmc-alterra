@@ -2,11 +2,12 @@ package services
 
 import (
 	"day_4/transport"
+	"net/http"
 )
 
 func (c *services) HealthCheck() *transport.Response {
 	return &transport.Response{
-		Code:    200,
+		Code:    http.StatusOK,
 		Status:  "success",
 		Message: "Server successfully running",
 	}

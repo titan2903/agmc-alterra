@@ -13,3 +13,19 @@
   ```shell
   go run main.go
   ```
+
+- Run the Go Test
+
+  - Uncomment DB DSN in config/config.go
+  - Comment line code `dsnMaster := os.Getenv("DB_DSN")`
+  - Go to folder handlers:
+
+    ```shell
+    cd handlers
+    ```
+
+  - Run command below for running the test:
+
+    ```shell
+    go test
+    ```
