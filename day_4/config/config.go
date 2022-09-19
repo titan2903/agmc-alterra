@@ -10,6 +10,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -48,6 +49,11 @@ var (
 
 func GetQuery() *gorm.DB {
 
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	oneSync.Do(func() {
 		dbLogger := logger.New(
 			log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
@@ -65,9 +71,7 @@ func GetQuery() *gorm.DB {
 			Logger:                 dbLogger,
 		}
 
-		// dsnMaster := os.Getenv("DB_DSN")
-		dsnMaster := "root:password@tcp(127.0.0.1:3306)/day3?parseTime=true" //! Uncomment if you want running the go test
-		// dsnMaster := "root:your_password@tcp(127.0.0.1:your_port)/your_database_name?parseTime=true" //! Uncomment if you want running the go test
+		dsnMaster := os.Getenv("DB_DSN")
 		dbMaster, errMaster := gorm.Open(mysql.Open(dsnMaster), gormConfig)
 		if errMaster != nil {
 			log.Panic(errMaster)

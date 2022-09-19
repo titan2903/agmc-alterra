@@ -16,8 +16,6 @@
 
 - Run the Go Test
 
-  - Uncomment DB DSN in config/config.go
-  - Comment line code `dsnMaster := os.Getenv("DB_DSN")`
   - Go to folder handlers:
 
     ```shell
