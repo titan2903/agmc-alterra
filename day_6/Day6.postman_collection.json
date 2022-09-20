@@ -1205,7 +1205,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"description\": \"Bad\",\n    \"rating\": 2\n}",
+							"raw": "{\n    \"description\": \"Very Good\",\n    \"rating\": 5\n}",
 							"options": {
 								"raw": {
 									"language": "json"
