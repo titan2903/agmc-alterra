@@ -15,6 +15,10 @@
 - Run the server
 
   ```shell
+  go mod tidy
+  ```
+  
+  ```shell
   go run main.go
   ```
 
