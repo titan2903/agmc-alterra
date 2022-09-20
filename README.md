@@ -9,16 +9,20 @@
 
 ### Day 1
 
-- [Postman collection Binance and Book](https://github.com/titan2903/agmc-alterra/tree/master/day_1)
+- [Task Postman collection Binance and Book](https://github.com/titan2903/agmc-alterra/tree/master/day_1)
 
 ### Day 2
 
-- [RESTful API using Golang, Echo, Gorm and MySQL](https://github.com/titan2903/agmc-alterra/tree/master/day_2)
+- [Task RESTful API using Golang, Echo, Gorm and MySQL](https://github.com/titan2903/agmc-alterra/tree/master/day_2)
 
 ### Day 3
 
-- [Middleware(Logging, Authorization, Authentication JWT)](https://github.com/titan2903/agmc-alterra/tree/master/day_3)
+- [Task Middleware(Logging, Authorization, Authentication JWT)](https://github.com/titan2903/agmc-alterra/tree/master/day_3)
 
 ### Day 4
 
-- [Unit Test and Integration Tests](https://github.com/titan2903/agmc-alterra/tree/master/day_4)
+- [Task Unit Test and Integration Tests](https://github.com/titan2903/agmc-alterra/tree/master/day_4)
+
+### Day 6
+
+- [Task Implement Hexagonal Architecture Using Golang, Gorm, Echo, MongoDB (NoSQL) and MySQL (SQL)](https://github.com/titan2903/agmc-alterra/tree/master/day_6)
