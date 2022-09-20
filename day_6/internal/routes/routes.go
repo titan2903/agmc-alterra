@@ -47,6 +47,7 @@ func NewRoutes() *echo.Echo {
 	gJwt.GET("/v1/reviews", handler.GetReviews)
 	gJwt.PUT("/v1/reviews/:id", handler.UpdateReview)
 	gJwt.DELETE("/v1/reviews/:id", handler.DeleteReview)
+	gJwt.GET("/v1/reviews/:id", handler.GetReview)
 
 	return e
 }

@@ -51,6 +51,10 @@ func (s *services) UpdateReview(review *models.Review, id string) (*dto.Response
 	reviewMapping := bson.M{"description": review.Description, "rating": review.Rating}
 
 	err := s.repo.UpdateReview(reviewMapping, id)
+	if err != nil {
+		return nil, err
+	}
+
 	result := &dto.Response{
 		Code:    200,
 		Status:  "success",
@@ -63,12 +67,31 @@ func (s *services) UpdateReview(review *models.Review, id string) (*dto.Response
 
 func (s *services) DeleteReview(id string) (*dto.Response, error) {
 	err := s.repo.DeleteReview(id)
+	if err != nil {
+		return nil, err
+	}
 
 	result := &dto.Response{
 		Code:    200,
 		Status:  "success",
 		Message: "Success delete review",
 		Data:    err,
+	}
+
+	return result, nil
+}
+
+func (s *services) GetReview(id string) (*dto.Response, error) {
+	review, err := s.repo.GetReview(id)
+	if err != nil {
+		return nil, err
+	}
+
+	result := &dto.Response{
+		Code:    200,
+		Status:  "success",
+		Message: "Success get review",
+		Data:    review,
 	}
 
 	return result, nil

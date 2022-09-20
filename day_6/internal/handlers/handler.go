@@ -34,6 +34,7 @@ type Handlers interface {
 	GetReviews(c echo.Context) error
 	UpdateReview(c echo.Context) error
 	DeleteReview(c echo.Context) error
+	GetReview(c echo.Context) error
 }
 
 func NewHandlers(service services.Services) Handlers {

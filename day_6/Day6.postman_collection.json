@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "368c08f7-0181-4c8f-904c-38243d6ff7a1",
+		"_postman_id": "868fba7b-7dcd-4a2e-83bf-eaa4e369ea52",
 		"name": "Day6",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12510739"
@@ -1023,7 +1023,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"description\": \"Good\",\n    \"rating\": 4\n}",
+									"raw": "{\n    \"description\": \"Very Bad\",\n    \"rating\": 1\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1044,7 +1044,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "632937d01d18074af97d3a19"
+											"value": "632938e025b9ce77b2a2124b"
 										}
 									]
 								}
@@ -1134,7 +1134,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "632937d01d18074af97d3a19"
+											"value": "632938e025b9ce77b2a2124b"
 										}
 									]
 								}
@@ -1185,6 +1185,87 @@
 									"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success delete review\",\n    \"data\": null\n}"
 								}
 							]
+						},
+						{
+							"name": "v1GetReviewById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/jwt/v1/reviews/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"jwt",
+										"v1",
+										"reviews",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "63293d3218f83a45ee06a8fd"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/jwt/v1/reviews/:id",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"jwt",
+												"v1",
+												"reviews",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "63293d3218f83a45ee06a8fd"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=UTF-8"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 20 Sep 2022 07:40:42 GMT"
+										},
+										{
+											"key": "Content-Length",
+											"value": "136"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Success get review\",\n    \"data\": {\n        \"id\": \"63293d3218f83a45ee06a8fd\",\n        \"description\": \"Good\",\n        \"rating\": 4\n    }\n}"
+								}
+							]
 						}
 					]
 				},
@@ -1205,7 +1286,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"description\": \"Very Good\",\n    \"rating\": 5\n}",
+							"raw": "{\n    \"description\": \"Good\",\n    \"rating\": 4\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1389,7 +1470,7 @@
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NjM2NDY1NDcsInVzZXJJZCI6Mzh9.vS9jVwWVwIUYM-HwIm2fqE4Nswa6k3_0neEj6WgYPUY",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NjM2NjExMDUsInVzZXJJZCI6Mzh9.MEHm0olUN9vUaSnGqhOZ-3Jqoae3FGXVTR8T6FC5aTE",
 			"type": "string"
 		}
 	]

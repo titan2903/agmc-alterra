@@ -38,7 +38,7 @@ func (h *handler) GetReviews(c echo.Context) error {
 
 	result, err := h.service.GetReviews()
 	if err != nil {
-		response.Code = 400
+		response.Code = 404
 		response.Status = "failed"
 		response.Message = "Failed to get reviews"
 		return c.JSON(http.StatusBadRequest, response)
@@ -83,6 +83,24 @@ func (h *handler) DeleteReview(c echo.Context) error {
 		response.Code = 400
 		response.Status = "failed"
 		response.Message = "Failed to delete review"
+		return c.JSON(http.StatusBadRequest, response)
+	}
+
+	response.Code = result.Code
+	response.Status = result.Status
+	response.Message = result.Message
+	response.Data = result.Data
+	return c.JSON(http.StatusCreated, response)
+}
+
+func (h *handler) GetReview(c echo.Context) error {
+	response := new(dto.Response)
+	id := c.Param("id")
+	result, err := h.service.GetReview(id)
+	if err != nil {
+		response.Code = 404
+		response.Status = "failed"
+		response.Message = "Failed to get review"
 		return c.JSON(http.StatusBadRequest, response)
 	}
 

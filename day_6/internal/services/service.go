@@ -34,6 +34,7 @@ type Services interface {
 	GetReviews() (*dto.Response, error)
 	DeleteReview(id string) (*dto.Response, error)
 	UpdateReview(review *models.Review, id string) (*dto.Response, error)
+	GetReview(id string) (*dto.Response, error)
 }
 
 func NewServices(r repositories.Repositories) Services {

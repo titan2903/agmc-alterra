@@ -34,6 +34,7 @@ type Repositories interface {
 	GetReviews() (*[]models.Review, error)
 	DeleteReview(id string) error
 	UpdateReview(review primitive.M, id string) error
+	GetReview(id string) (*models.Review, error)
 }
 
 func NewRepositories(

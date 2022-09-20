@@ -84,3 +84,20 @@ func (r *repositories) DeleteReview(id string) error {
 
 	return err
 }
+
+func (r *repositories) GetReview(id string) (*models.Review, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	objId, _ := primitive.ObjectIDFromHex(id)
+	qry := r.mg.Database(utils.GoDotEnvVariable("MONGODB_NAME")).Collection(utils.GoDotEnvVariable("MONGODB_COLLECTION_REVIEWS"))
+
+	var review models.Review
+	err := qry.FindOne(ctx, bson.M{"id": objId}).Decode(&review)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &review, nil
+}
