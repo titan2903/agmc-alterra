@@ -30,3 +30,7 @@
 ### Day 7
 
 - [Task Docker image](https://github.com/titan2903/agmc-alterra/tree/master/agmc-day-7)
+
+### Day 8
+
+- [Task Deployment Golang Service](https://github.com/titan2903/agmc-alterra/tree/master/agmc-day-8)
