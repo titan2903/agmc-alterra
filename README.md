@@ -26,3 +26,7 @@
 ### Day 6
 
 - [Task Implement Hexagonal Architecture Using Golang, Gorm, Echo, MongoDB (NoSQL) and MySQL (SQL)](https://github.com/titan2903/agmc-alterra/tree/master/day_6)
+
+### Day 7
+
+- [Task Docker image](https://github.com/titan2903/agmc-alterra/tree/master/agmc-day-7)
