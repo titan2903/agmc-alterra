@@ -1,5 +1,11 @@
 # RESTful API User And Book
 
+## Docker Image
+
+- Pull Docker Image from Docker Hub
+
+  [Link URL to Docker Image agmc-day-7](https://hub.docker.com/r/titan29/agmc-day-7)
+
 ## Prerequisite
 
 - [Go 1.18](https://golang.org/dl/)
@@ -35,9 +41,3 @@
     ```shell
     go test
     ```
-
-## Docker Image
-
-- Pull Docker Image from Docker Hub
-
-  [Link URL to Docker Image agmc-day-7](https://hub.docker.com/r/titan29/agmc-day-7)
