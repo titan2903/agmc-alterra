@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: agmc-day-7
+    image: agmc-day-7
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
