@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "868fba7b-7dcd-4a2e-83bf-eaa4e369ea52",
-		"name": "Day6",
+		"name": "Day8",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "12510739"
 	},
@@ -335,7 +335,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Maling Kandang\",\n    \"writer\": \"John Doe\"\n}",
+							"raw": "{\n    \"title\": \"Si Kancil\",\n    \"writer\": \"Budi\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -932,7 +932,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"password\": \"12345\",\n    \"username\": \"test1\"\n}",
+							"raw": "{\n    \"password\": \"1234\",\n    \"username\": \"test2\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1429,9 +1429,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/v1/healthcheck",
+					"raw": "https://mysterious-mountain-19825.herokuapp.com/v1/healthcheck",
+					"protocol": "https",
 					"host": [
-						"{{base_url}}"
+						"mysterious-mountain-19825",
+						"herokuapp",
+						"com"
 					],
 					"path": [
 						"v1",
@@ -1465,12 +1468,12 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "http://localhost:8080",
+			"value": "https://mysterious-mountain-19825.herokuapp.com",
 			"type": "string"
 		},
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NjM2NjExMDUsInVzZXJJZCI6Mzh9.MEHm0olUN9vUaSnGqhOZ-3Jqoae3FGXVTR8T6FC5aTE",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjE2NjM3NzYzOTEsInVzZXJJZCI6MX0.u-o4FMojqzQh2UvWFDqTihedHm0H7eGbj2LQga5KHS8",
 			"type": "string"
 		}
 	]
