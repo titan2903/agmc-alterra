@@ -2,12 +2,18 @@ package main
 
 import (
 	"agmc-day-8/internal/routes"
+	"agmc-day-8/pkg/utils"
 	"fmt"
 )
 
 func main() {
-	port := ":8080"
 	e := routes.NewRoutes()
-	e.Logger.Fatal(e.Start(":8080"))
+	port := utils.GoDotEnvVariable("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	sPort := fmt.Sprintf(":%s", port)
+	e.Logger.Fatal(e.Start(sPort))
 	fmt.Printf("Successfully started on port %s\n", port)
 }
