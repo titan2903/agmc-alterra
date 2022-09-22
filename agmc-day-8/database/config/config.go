@@ -72,11 +72,10 @@ func GetQuery() *gorm.DB {
 		//! ----------------------------------------------------------------------------------------------
 
 		// ! Connect to PostgreSQL database
-		// dsnMaster := fmt.Sprintf(
-		// 	"host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
-		// 	utils.GoDotEnvVariable("HOST"), utils.GoDotEnvVariable("DB_USER"), utils.GoDotEnvVariable("PASSWORD"), utils.GoDotEnvVariable("DB_NAME"), utils.GoDotEnvVariable("PORT"), utils.GoDotEnvVariable("SSL_MODE"),
-		// )
-		dsnMaster := utils.GoDotEnvVariable("DB_DSN")
+		dsnMaster := fmt.Sprintf(
+			"host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
+			utils.GoDotEnvVariable("HOST"), utils.GoDotEnvVariable("DB_USER"), utils.GoDotEnvVariable("PASSWORD"), utils.GoDotEnvVariable("DB_NAME"), utils.GoDotEnvVariable("PORT"), utils.GoDotEnvVariable("SSL_MODE"),
+		)
 		dbMaster, errMaster := gorm.Open(postgres.Open(dsnMaster), &gorm.Config{})
 		if errMaster != nil {
 			log.Panic(errMaster)
