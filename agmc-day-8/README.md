@@ -4,9 +4,9 @@
 
 - [Public URL Deployment Success](https://mysterious-mountain-19825.herokuapp.com/v1/healthcheck)
   
-- ![Image Deployment Success](images/server-deploy-success.png)
+- ![Image Deployment Success](pkg/images/server-deploy-success.png)
   
-- ![Image Deployment Success on Browser](images/deploy-success-on-browser.png)
+- ![Image Deployment Success on Browser](pkg/images/deploy-success-on-browser.png)
 
 ## Docker Image
 
