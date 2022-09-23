@@ -4,7 +4,7 @@ name: Push-to-Heroku
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-docker:
