@@ -34,3 +34,7 @@
 ### Day 8
 
 - [Task Deployment Golang Service](https://github.com/titan2903/agmc-alterra/tree/master/agmc-day-8)
+
+### Day 10
+
+- [Task CI/CD](https://github.com/titan2903/agmc-day-10)
